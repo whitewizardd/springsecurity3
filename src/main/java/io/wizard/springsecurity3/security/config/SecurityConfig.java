@@ -18,6 +18,7 @@ public class SecurityConfig {
         Class<BasicAuthenticationFilter> basicAuth = BasicAuthenticationFilter.class;
         return httpSecurity
                 .addFilterAt(authenticationFilter, basicAuth)
+                .authorizeHttpRequests(b -> b.anyRequest().authenticated())
                 .build();
     }
 }

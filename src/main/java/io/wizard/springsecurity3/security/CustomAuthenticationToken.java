@@ -1,5 +1,6 @@
 package io.wizard.springsecurity3.security;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,9 +9,9 @@ import java.util.Collection;
 
 
 @RequiredArgsConstructor
+@Getter
 public class CustomAuthenticationToken implements Authentication {
-
-    private final String token;
+    private final String key;
     private boolean isAuthenticated;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

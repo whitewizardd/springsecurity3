@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -30,6 +29,7 @@ public class CustomerAuthenticationFilter extends OncePerRequestFilter {
 
         //extract the authentication credentials from the request
         String token = request.getHeader("token");
+        log.info("request token {}", token);
         //create an authentication object that is yet to be authenticated
         Authentication authentication = new CustomAuthenticationToken(token);
         log.info("authentication status before manager {}", authentication.isAuthenticated());
